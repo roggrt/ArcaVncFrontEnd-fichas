@@ -1,0 +1,33 @@
+<div class="logo arca">
+	<a href="/#/menu" class="simple-text" >
+		<img src="/assets/img/arca-logo.png" />
+	</a>
+</div>
+<div class="sidebar-wrapper">
+	<ul class="nav">
+		<li routerLinkActive="active" class="nav-item" *ngFor="let menu of menuItems">
+			<ng-container *ngIf="hasRole(menu.roles)">
+				<a data-toggle="collapse" class="nav-link" routerLinkActive="active" [routerLink]="menu.url"
+					[attr.data-target]="'#'+menu.ref">
+					<i [class]="menu.icon"></i>
+					<strong>
+						{{menu.tittle }}
+					</strong>
+				</a>
+				<div>
+					<ul *ngIf="menu.ref" class="nav" class="collapse" [id]="menu.ref">
+						<li routerLinkActive="active" class="nav-item" *ngFor="let items of menu.items">
+							<ng-container *ngIf="hasRole(items.roles)">
+								<a data-toggle="collapse" class="nav-link" [routerLink]="items.url">
+									<i [class]="items.icon">
+									</i>
+									<strong>{{ items.tittle }}</strong>
+								</a>
+							</ng-container>
+						</li>
+					</ul>
+				</div>
+			</ng-container>
+		</li>
+	</ul>
+</div>

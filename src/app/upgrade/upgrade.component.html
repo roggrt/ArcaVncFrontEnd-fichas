@@ -1,0 +1,233 @@
+<div class="container-fluid">
+  <div class="main-content">
+      <div class="container-fluid">
+          <div class="row">
+              
+                  <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h5 class="card-title">"PERFIL ANIMAL"</h5>
+                      </div>
+                  <div class="row" >
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="col-12">
+                          <div class="container">
+                            <button type="button" class="btn2" (click)="irAtras()"style="margin:2em;">
+                              <i class="fa fa-reply" aria-hidden="true"></i>
+                             Regresar
+                            </button>
+                            <button type="button" class="btn2" (click)="irFicha()" >
+                              <i class="fa fa-plus-square" aria-hidden="true"></i>
+                              Nueva Ficha
+                            </button>
+                            <button type="button" class="btn2" (click)="irVacuna(animal.id)" >
+                              <i class="fa fa-plus-square" aria-hidden="true"></i>
+                              Agregar Vacuna
+                            </button>
+                           </div>
+                        <div class="card mb-12">
+                          <div class="row "  *ngIf="animal">
+                            <div class="col-md-4">
+                              <img src="{{animal.urlImagenAnimal}}" class="img-fluid" alt="">
+                             <hr>
+                               
+                              <b> COLOR/CARACTERISTICAS: </b> <label
+                              class="card-text">{{animal.colorCaracteristicas}}</label>
+                              <hr>
+    
+                                
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">  <div class="row">
+                                <div class="col-md-5">
+                            
+                                  <b> CODIGO: </b> <label
+                                  class="card-text">{{animal.id}}</label>
+                                  <hr>
+                                </div>
+                                <div class="col-md-6">
+                            
+                              <b> NOMBRE: </b> <label
+                              class="card-text">{{animal.nombre}}</label>
+                            <hr>
+                            </div>
+                              </div>
+                              <div class="row">
+                            <div class="col-md-5">
+
+                              <b> RAZA: </b> <label
+                              class="card-text">{{animal.raza}}</label>
+                          <hr>
+                            </div>
+                       
+                         
+                            <div class="col-md-6">
+                        
+                              <b> ESPECIE: </b> <label
+                              class="card-text">{{animal.especie}}</label>
+                              <hr>
+                            </div>
+                              </div>
+                              <div class="row">
+                            <div class="col-md-5">
+                              <b> LUGAR ESTANCIA: </b> <label
+                              class="card-text">{{animal.lugarEstancia}}</label>
+                              <hr>
+                            </div>
+                            <div class="col-md-6">
+                              <b> PROCEDENCIA: </b> <label
+                              class="card-text">{{animal.procedencia}}</label>
+                              <hr>
+                            </div>
+                          
+                              </div>
+                              <div class="row">
+                            <div class="col-md-3">
+                              <b> PESO: </b> <label
+                              class="card-text">{{animal.peso}} Klg.</label>
+                              <hr>
+                            </div>
+
+                            <div class="col-md-3">
+
+                            <b> EDAD: </b> <label
+                            class="card-text">{{animal.edad}}</label>
+                            <hr>
+                            </div>
+                            <div class="col-md-3">
+                              <b> SEXO: </b> <label
+                              class="card-text">{{animal.sexo}}</label>
+                              <hr>
+                            </div>
+                          </div>
+
+
+
+
+                                <div class="row">
+                                  <div class="col-md-8">
+                                    <b> OBSERVACIONES/PROCEDENCIA: </b> <label
+                                    class="card-text">{{animal.observacionesProcedencia}}</label>
+                                   
+                                  </div>
+                               
+                                </div>
+                            </div>  </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                 
+                              <div class="container" >
+                  
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">fICHAS CLINICAS</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
+                                <div id="demo" class="collapse">
+                                  <table class="table" *ngFor="let ficha of fichaClinica">
+                                    <thead>
+                                      <tr>
+                                        
+                                        <th scope="col">N° HISTORIA CLINIICA</th>
+                                        <th scope="col">FECHA INGRESO</th>
+                                        <th scope="col">ACCIONES</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                      
+                                        <td>{{ficha.id}}</td>
+                                        <td>{{ficha.fechaIngreso}}</td>
+                                        <td>
+                                          
+                                          
+                                          <div>
+                                            <div class="btn-group">
+                                                <div>
+                                                    <button mat-raised-button type="submit"
+                                                        class="btn btn-danger btn-round" class="btneditar"
+                                                        (click)="getVeterinarioById(veterinario.id)">
+                                                        <i class="material-icons">mode_edit</i>
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button mat-raised-button type="submit"
+                                                        class="btn btn-danger btn-round" class="btneliminar"
+                                                        (click)="borrarFicha(ficha.id)">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        </td>
+                                      </tr>
+                                     
+                                    
+                                    </tbody>
+                                  </table>
+                                </div>
+          
+          
+                                <div id="demovacu" class="collapse">
+                                  <table class="table" *ngFor="let carnet of carnetVacuna">
+                                    <thead>
+                                      <tr>
+                                        
+                                        <th scope="col">N° VACUNA</th>
+                                        <th scope="col">NOMBRE</th>
+                                        <th scope="col">FECHA APLICACION</th>
+                                        <th scope="col">FECHA PROXIMA</th>
+                                        <th scope="col">TIPO</th>
+                                        <th scope="col">ACCIONES</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+  
+                                        <td>{{carnet.id}}</td>
+                                        <td>{{carnet.vacuna.nombre}}</td>
+                                        <td>{{carnet.fechaAplicacion}}</td>
+                                        <td>{{carnet.fechaProximaAplicacion}}</td>
+                                        <td>{{carnet.vacuna.tipo}}</td>
+                                       
+                                        <td><div>
+                                          <div class="btn-group">
+                                              <div>
+                                                  <button mat-raised-button type="submit"
+                                                      class="btn btn-danger btn-round" class="btneditar"
+                                                      (click)="getVeterinarioById(veterinario.id)">
+                                                      <i class="material-icons">mode_edit</i>
+                                                  </button>
+                                              </div>
+                                              <div>
+                                                  <button mat-raised-button type="submit"
+                                                      class="btn btn-danger btn-round" class="btneliminar"
+                                                      (click)="borrarVacuna(carnet.id)">
+                                                      <i class="material-icons">delete</i>
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </div></td>
+                                      </tr>
+                                     
+                                    
+                                    </tbody>
+                                  </table>
+                                </div>
+          
+                              </div></div>
+                     
+                    </div>
+                    
+                    </div>
+
+                              
+          </div>
+                  </div>
+                  </div>
+                  </div>
+      
+      
+
